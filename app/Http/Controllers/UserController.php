@@ -5,6 +5,8 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
 class UserController extends Controller
 {
     //
@@ -43,6 +45,9 @@ class UserController extends Controller
             if($user_id=='-1')
             {
                 $sql="CALL sproc_siremar_user_registration('$first_name','$last_name','$address','$county_id','$dob','$gender','$is_citizen','$phone_no','$email_id','$passcode','$role_type','$is_deleted')";
+                $details=["name"=> $first_name];
+                Mail:: to($email_id)->send(new WelcomeMail($details));
+
             }
             else{
                 $sql="CALL sproc_siremar_update_user_details('$user_id','$first_name','$last_name','$address','$county_id','$dob','$gender','$is_citizen','$phone_no','$email_id','$passcode','$role_type','$is_deleted')";

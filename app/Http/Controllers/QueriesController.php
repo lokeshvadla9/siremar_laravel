@@ -23,4 +23,9 @@ class QueriesController extends Controller
             return json_encode(array("response"=>"failure","data"=>NULL));
         }
     }
+
+    function getQueries()
+    {
+        
+    }
 }

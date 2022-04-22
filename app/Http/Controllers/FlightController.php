@@ -15,7 +15,7 @@ class FlightController extends Controller
                 $arrival_date=$request->arrival_date;
                 $departure_date=$request->departure_date;
                 $is_deleted=$request->is_deleted;
-                $sql="CALL sproc_siremar_InsertOrUpdateFlight('$flight_id','$departure','$arrival','$departure_date','$arrival_date','$is_deleted')";
+                $sql="CALL sproc_siremar_InsertOrUpdateFlights('$flight_id','$departure','$arrival','$departure_date','$arrival_date','$is_deleted')";
                 $result=DB::select($sql);
                 return json_encode(array("response"=>"success","data"=>$result[0]));
         }
