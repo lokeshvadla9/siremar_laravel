@@ -26,6 +26,14 @@ class QueriesController extends Controller
 
     function getQueries()
     {
-        
+        try{
+            $sql="CALL sproc_siremar_get_queries()";
+            $result=DB::select($sql);
+            return json_encode(array("response"=>"success","data"=>$result));
+        }
+        catch (Throwable $e) {
+            report($e);
+            return json_encode(array("response"=>"failure","data"=>NULL));
+        }
     }
 }

@@ -24,6 +24,7 @@ Route::post('login','App\Http\Controllers\UserController@login');
 Route::post('createorupdateuser','App\Http\Controllers\UserController@createOrUpdateUser');
 Route::get('getuserdetails/{role_type}','App\Http\Controllers\UserController@getUserDetails');
 Route::post('contactus','App\Http\Controllers\QueriesController@contactus');
+Route::get('getqueries','App\Http\Controllers\QueriesController@getQueries');
 Route::post('createorupdatebusiness','App\Http\Controllers\BusinessController@insertOrUpdateBusiness');
 Route::get('getbusinessdetails','App\Http\Controllers\BusinessController@getBusinessDetails');
 Route::post('createormodifyevent','App\Http\Controllers\EventController@insertOrUpdateEvent');
@@ -37,9 +38,6 @@ Route::get('getdiscounts','App\Http\Controllers\DiscountController@getDiscounts'
 Route::post('registertoschool','App\Http\Controllers\SchoolController@registerToSchool');
 Route::get('getschools','App\Http\Controllers\SchoolController@getSchools');
 Route::get('getschoolregistrationbyid/{user_id}','App\Http\Controllers\SchoolController@getSchoolRegistrationById');
-Route::post('/sendemail',function(Request $request){
-        $email_id=$request->email_id;
-        Mail:: to($email_id)->send(new WelcomeMail());
-        return "Email sent successfully";
-});
-Route::post('/forgotpassword','App\Http\Controllers\EmailController@forgotPassword');
+
+Route::get('getadminstats', 'App\Http\Controllers\UserController@getAdminStats');
+Route::post('forgotpassword','App\Http\Controllers\EmailController@forgotPassword');
