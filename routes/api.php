@@ -38,6 +38,5 @@ Route::get('getdiscounts','App\Http\Controllers\DiscountController@getDiscounts'
 Route::post('registertoschool','App\Http\Controllers\SchoolController@registerToSchool');
 Route::get('getschools','App\Http\Controllers\SchoolController@getSchools');
 Route::get('getschoolregistrationbyid/{user_id}','App\Http\Controllers\SchoolController@getSchoolRegistrationById');
-
 Route::get('getadminstats', 'App\Http\Controllers\UserController@getAdminStats');
 Route::post('forgotpassword','App\Http\Controllers\EmailController@forgotPassword');
